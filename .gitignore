@@ -1,0 +1,12 @@
+# Node backend
+backend/node_modules/
+backend/.env
+
+# React frontend
+client/node_modules/
+client/build/
+client/.env
+
+# System files
+*.log
+.DS_Store

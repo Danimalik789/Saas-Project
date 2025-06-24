@@ -1,0 +1,19 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": " Building a saas freelance project. A job bidding applicaiton like fiver. This project is my intersnhip assignment at HiSky-Tech.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Danimalik789/Saas-Project.git"
+  },
+  "author": "Danyal Malik",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Danimalik789/Saas-Project/issues"
+  },
+  "homepage": "https://github.com/Danimalik789/Saas-Project#readme"
+}
