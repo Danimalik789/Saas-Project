@@ -21,6 +21,13 @@ if (process.env.NODE_ENV === "development") {
 
 app.use(express.json())
 
+app.use(
+  cors({
+    origin: "http://localhost:3000", // Allow requests from your React frontend
+    credentials: true, // Allow cookies (if using)
+  })
+)
+
 app.get("/", (req, res) => {
   res.send("API is running....")
 })
@@ -28,6 +35,7 @@ app.get("/", (req, res) => {
 //Use Routes
 app.use("/api/users", userRoutes)
 
+//error middlewares
 app.use(notFound)
 app.use(errorHandler)
 

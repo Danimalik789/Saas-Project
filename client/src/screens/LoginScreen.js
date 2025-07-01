@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { Form, Button, Row, Col } from "react-bootstrap"
 import { Link, useNavigate, useLocation } from "react-router"
-import { dummyUsers } from "../data/users"
+import axios from "../config/axios"
 import FormContainer from "../components/FormContainer"
 
 const LoginScreen = () => {
@@ -12,34 +12,27 @@ const LoginScreen = () => {
   const navigate = useNavigate()
   const location = useLocation()
 
-  const redirect = new URLSearchParams(location.search).get("redirect") || "/"
-
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault()
 
-    const user = dummyUsers.find(
-      (u) => u.email === email && u.password === password
-    )
-
-    if (user) {
-      localStorage.setItem("userInfo", JSON.stringify(user))
-      if (user.role === "admin") {
-        navigate("/admin/dashboard")
-      } else {
-        navigate("dashboard/freelancer")
-      }
-    } else {
-      setError("Invalid email or password")
+    try {
+      const { data } = await axios.post("/users/login", {
+        email,
+        password,
+      })
+      localStorage.setItem("userInfo", JSON.stringify(data))
+      navigate(
+        data.role === "admin" ? "/admin/dashboard" : "/dashboard/freelancer"
+      )
+    } catch (error) {
+      setError(error.response?.data?.message || "Registration failed")
     }
-
   }
 
   return (
     <FormContainer>
       <h1>Sign in</h1>
       <Form onSubmit={submitHandler}>
-
-        
         <Form.Group controlId='email'>
           <Form.Label>Email Address</Form.Label>
           <Form.Control

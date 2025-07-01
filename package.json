@@ -1,0 +1,39 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": " Building a saas freelance project. A job bidding application like fiver. This project is my internship assignment at HiSky-Tech.",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node backend/server.js",
+    "server": "nodemon backend/server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Danimalik789/Saas-Project.git"
+  },
+  "author": "Danyal Malik",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Danimalik789/Saas-Project/issues"
+  },
+  "homepage": "https://github.com/Danimalik789/Saas-Project#readme",
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "colors": "^1.4.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "express-async-handler": "^1.2.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.16.0",
+    "morgan": "^1.10.0",
+    "validator": "^13.15.15"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.0",
+    "nodemon": "^3.1.10"
+  }
+}

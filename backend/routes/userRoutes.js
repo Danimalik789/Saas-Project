@@ -10,7 +10,7 @@ import {
 
 import { protect, admin } from "../middleware/authMiddleware.js"
 
-router.route("/").post(registerUser).get(protect, admin, getAllUsers)
+router.route("/register").post(registerUser).get(protect, admin, getAllUsers)
 router.post("/login", authUser)
 router
   .route("/profile")

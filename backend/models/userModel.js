@@ -1,27 +1,32 @@
 import mongoose from "mongoose"
 import bcrypt from "bcryptjs"
+import validator from "validator"
 
 const userSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: true,
+      required: [true, "Name is required"],
     },
     email: {
       type: String,
-      required: true,
+      required: [true, "Email is required"],
       unique: true,
+      validate: validator.isEmail,
     },
     password: {
       type: String,
-      required: true,
+      required: [true, "password is required"],
       minlength: 6,
     },
     role: {
       type: String,
       enum: ["admin", "freelancer"],
-      required: true,
+      required: [true, "Role is required"],
     },
+    skills: [String],
+    bio: String,
+    rating: { type: Number, default: 0 },
   },
   {
     timestamps: true,

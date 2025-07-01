@@ -118,4 +118,10 @@ const getAllUsers = asyncHandler(async (req, res) => {
   res.json(users)
 })
 
-export { authUser, registerUser, updateUserProfile, getUserProfile, getAllUsers }
+export {
+  authUser,
+  registerUser,
+  updateUserProfile,
+  getUserProfile,
+  getAllUsers,
+}
