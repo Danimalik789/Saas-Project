@@ -2,11 +2,20 @@ import mongoose from "mongoose"
 
 const jobSchema = new mongoose.Schema(
   {
-    title: String,
+    title: {
+      type: String,
+      required: [true, "title is required"],
+    },
     desc: String,
-    budget: Number,
+    budget: {
+      type: Number,
+      required: [true, "title is required"],
+    },
     deadline: Date,
-    category: String,
+    category: {
+      type: String,
+      required: [true, "category is required"],
+    },
     status: {
       type: String,
       enum: ["open", "assigned", "completed"],

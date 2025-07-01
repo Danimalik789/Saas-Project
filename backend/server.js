@@ -5,6 +5,7 @@ import morgan from "morgan"
 import colors from "colors"
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js"
 import userRoutes from "./routes/userRoutes.js"
+import jobRoutes from "./routes/jobRoutes.js"
 
 import connectDB from "./config/db.js"
 
@@ -33,7 +34,12 @@ app.get("/", (req, res) => {
 })
 
 //Use Routes
+
+//User Related Routes
 app.use("/api/users", userRoutes)
+
+//Job Related Routes
+app.use("/api/jobs", jobRoutes)
 
 //error middlewares
 app.use(notFound)
