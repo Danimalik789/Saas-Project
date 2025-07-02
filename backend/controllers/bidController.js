@@ -36,4 +36,18 @@ const getBidsForJob = asyncHandler(async (req, res) => {
   const bids = await Bid.find({ job: jobId }).populate("user", "name email")
   res.json(bids)
 })
-export { createBid, getBidsForJob }
+
+const updateBidStatus = asyncHandler(async (req, res) => {
+  const { status } = req.body
+  const bid = await Bid.findById(req.params.bidId)
+
+  if (!bid) {
+    res.status(404)
+    throw new Error("Bid not found")
+  }
+
+  bid.status = status
+  const updatedBid = await bid.save()
+  res.json(updatedBid)
+})
+export { createBid, getBidsForJob, updateBidStatus }
