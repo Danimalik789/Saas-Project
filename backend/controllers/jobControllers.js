@@ -43,4 +43,37 @@ const getJobById = asyncHandler(async (req, res) => {
   }
 })
 
-export { createJob, getJobs, getJobById }
+const updateJob = asyncHandler(async (req, res) => {
+  const { title, desc, budget, deadline, category, status } = req.body
+
+  const job = await Job.findById(req.params.id)
+  if (job) {
+    job.title = title || job.title
+    job.desc = desc || job.desc
+    job.budget = budget || job.budget
+    job.deadline = deadline || job.deadline
+    job.category = category || job.category
+    job.status = status || job.status
+
+    const updatedJob = await job.save()
+    res.json(updatedJob)
+  } else {
+    res.status(404)
+    throw new Error("No Job Found")
+  }
+})
+
+const deleteJob = asyncHandler(async (req, res) => {
+  const job = await Job.findById(req.params.id)
+  if (job) {
+    await job.deleteOne()
+    res.json({
+      message: "Job deleted",
+    })
+  } else {
+    res.status(404)
+    throw new Error("No Job Found")
+  }
+})
+
+export { createJob, getJobs, getJobById, updateJob, deleteJob }
