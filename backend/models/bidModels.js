@@ -21,7 +21,6 @@ const bidSchema = new mongoose.Schema(
     },
     timeline: {
       type: String,
-      required: true,
     },
     status: {
       type: String,

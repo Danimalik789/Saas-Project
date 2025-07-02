@@ -6,6 +6,7 @@ import colors from "colors"
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js"
 import userRoutes from "./routes/userRoutes.js"
 import jobRoutes from "./routes/jobRoutes.js"
+import bidRoutes from "./routes/bidRoutes.js"
 
 import connectDB from "./config/db.js"
 
@@ -40,6 +41,9 @@ app.use("/api/users", userRoutes)
 
 //Job Related Routes
 app.use("/api/jobs", jobRoutes)
+
+//Bid Related Routes
+app.use("/api/bids", bidRoutes)
 
 //error middlewares
 app.use(notFound)

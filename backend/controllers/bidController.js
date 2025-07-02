@@ -24,5 +24,16 @@ const createBid = asyncHandler(async (req, res) => {
     user: req.user._id,
     bidAmount,
     timeline,
+    message,
   })
+
+  const createdBid = await bid.save()
+  res.status(201).json(createdBid)
 })
+
+const getBidsForJob = asyncHandler(async (req, res) => {
+  const jobId = req.params.jobId
+  const bids = await Bid.find({ job: jobId }).populate("user", "name email")
+  res.json(bids)
+})
+export { createBid, getBidsForJob }
